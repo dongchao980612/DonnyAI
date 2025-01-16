@@ -43,7 +43,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // 创建消息内容元素
         const messageContent = document.createElement('div');
-        messageContent.textContent = message;
+        messageContent.innerHTML = marked.parse(message); // 使用marked将Markdown转换为HTML
 
         // 创建头像元素
         const avatarImg = document.createElement('img');
@@ -69,11 +69,10 @@ document.addEventListener('DOMContentLoaded', () => {
             messageDiv.appendChild(messageContent);
         }
 
-        // 滚动到消息列表底部
-        chatMessages.scrollTop = chatMessages.scrollHeight;
         // 将消息元素添加到消息列表中
         chatMessages.appendChild(messageDiv);
-
+        // 滚动到消息列表底部
+        chatMessages.scrollTop = chatMessages.scrollHeight;
     }
 
 
